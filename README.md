@@ -27,16 +27,70 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
 **Procedure**
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q,Q_bar).
 
-/* write all the steps invloved */
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
 
-**PROGRAM**
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+   
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
 
-**RTL LOGIC FOR FLIPFLOPS**
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
+
+*PROGRAM*
+
+Program for flipflops and verify its truth table in quartus using Verilog programming. 
+
+developed by: VAISHNAVI R NAIR
+
+RegisterNumber:24003448
+
+~~~
+
+T-FLIPFLOP
+
+module t_ff_ (t, clk, rst, q);
+
+  input t, clk, rst;
+  
+  output reg q;
+
+  always @(posedge clk or posedge rst) 
+  
+begin
+
+    if (rst)
+    
+      q <= 0; // Reset the flip-flop
+      
+    else if (t==0)
+    
+      q <= q; 
+      
+     else
+     
+        q<=~q;
+        
+  end
+  
+endmodule
+~~~
+
+
+**RTL**
+
+![WhatsApp Image 2024-12-24 at 00 53 40_6d310233](https://github.com/user-attachments/assets/c753eca5-c1ce-40c6-b297-ed4fe698b2ab)
+
+
+**OUTPUT**
+
+![WhatsApp Image 2024-12-24 at 00 55 26_78f5c19b](https://github.com/user-attachments/assets/e963c92f-ae2e-4e99-a3da-b805d8cefe29)
+
 
 **RESULTS**
+
+Hence, T flip-flop using verilog and validating their functionality using their functional table is implemented.
